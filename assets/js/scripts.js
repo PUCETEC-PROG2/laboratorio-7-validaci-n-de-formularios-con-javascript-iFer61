@@ -75,7 +75,7 @@ function validateForm() {
     const apellidoMaterno = document.getElementById('apellidoMaterno');
     const valorApellidoMaterno = apellidoMaterno.value.trim();
     
-    if (valorApellidoPaterno === '') {
+    if (valorApellidoMaterno === '') {
         // Campo vacío - marcar como inválido
         apellidoMaterno.classList.add('no-valid');
         isValid = false;
@@ -111,45 +111,73 @@ function validateForm() {
     
     
     // ==========================================
-    // TODO: Validar Motivo
+    // Validar Motivo
     // ==========================================
     // Requisitos: No vacío, mínimo 10 caracteres
     
     // Tu código aquí...
+    const motivo = document.getElementById('motivo');
+    const valorMotivo = motivo.value.trim();
+
+    if (valorMotivo === '') {
+        motivo.classList.add('no-valid');
+        isValid = false;
+    } else if (valorMotivo.length < 10) {
+        motivo.classList.add('no-valid');
+        isValid = false;
+    } else {
+        motivo.classList.remove('no-valid');
+    }
     
     
     // ==========================================
-    // TODO: Validar Tipo de Cuenta
+    // Validar Tipo de Cuenta
     // ==========================================
     // Requisitos: Debe tener un valor seleccionado (no vacío)
     // Pista: Verifica que select.value !== ''
     
     // Tu código aquí...
+    const tipoCuenta = document.getElementById('tipoCuenta');
+
+    if (tipoCuenta.value === '') {
+        tipoCuenta.classList.add('no-valid');
+        isValid = false;
+    } else {
+        tipoCuenta.classList.remove('no-valid');
+    }
     
     
     // ==========================================
-    // TODO: Validar Calle
+    // Validar Calle
     // ==========================================
     // Requisitos: No vacío, mínimo 3 caracteres
     
     // Tu código aquí...
+    if (!validarCampoTexto(document.getElementById('calle'), 3)) {
+        isValid = false;
+    }
     
     
     // ==========================================
-    // TODO: Validar Número
+    // Validar Número
     // ==========================================
     // Requisitos: No vacío
     
     // Tu código aquí...
+    if (!validarCampoTexto(document.getElementById('numero'), 1)) {
+        isValid = false;
+    }
     
     
     // ==========================================
-    // TODO: Validar Intersección
+    // Validar Intersección
     // ==========================================
     // Requisitos: No vacío, mínimo 3 caracteres
     
     // Tu código aquí...
-    
+    if (!validarCampoTexto(document.getElementById('interseccion'), 3)) {
+        isValid = false;
+    }
     
     // Retornar el resultado final de la validación
     return isValid;
